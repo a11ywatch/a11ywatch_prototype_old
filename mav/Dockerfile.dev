@@ -1,0 +1,33 @@
+FROM jeffmendez19/tensorflow-node-gpu
+
+WORKDIR /usr/src/app
+
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN apt-get install -y nodejs
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+
+COPY . .
+
+CMD [ "npm", "run", "dev"]
+
+
+# FROM jeffmendez19/tensorflow-node-gpu
+
+# WORKDIR /usr/src/app
+
+# # copy from build image
+# COPY --from=BUILD_IMAGE /usr/src/app/node_modules ./node_modules
+# COPY --from=BUILD_IMAGE /usr/src/app/src ./src
+# COPY --from=BUILD_IMAGE /usr/src/app/package.json ./package.json
+# COPY --from=BUILD_IMAGE /usr/src/app/package-lock.json ./package-lock.json
+# COPY --from=BUILD_IMAGE /usr/src/app/tsconfig.json ./tsconfig.json
+# COPY --from=BUILD_IMAGE /usr/src/app/.env ./.env
+# COPY --from=BUILD_IMAGE /usr/src/app/nodemon.json ./nodemon.json
+
+# CMD [ "yarn", "dev"]
+
+
+

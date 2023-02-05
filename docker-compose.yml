@@ -1,0 +1,75 @@
+version: "3.0"
+
+services:
+  web:
+    env_file: ./web/.env
+    image: jeffmendez19/a11y-web
+    ports:
+      - "3000:3000"
+    volumes:
+      - /web
+
+  cdn-server:
+    env_file: ./cdn-server/.env
+    image: jeffmendez19/cdn-server
+    ports:
+      - "8090:8090"
+    volumes:
+      - /cdn-server
+
+  api:
+    env_file: ./api/.env
+    image: jeffmendez19/a11y-api
+    ports:
+      - "8080:8080"
+    volumes:
+      - /api
+
+  angelica:
+    env_file: ./angelica/.env
+    image: jeffmendez19/angelica
+    ports:
+      - "8040:8040"
+    volumes:
+      - /angelica
+
+  iframe-server:
+    env_file: ./iframe-server/.env
+    image: jeffmendez19/iframe-server
+    volumes:
+      - /iframe-server
+    ports:
+      - "8010:8010"
+
+  mav:
+    env_file: ./mav/.env
+    image: jeffmendez19/mav
+    ports:
+      - "8020:8020"
+    volumes:
+      - /mav
+
+  watcher:
+    env_file: ./watcher/.env
+    image: jeffmendez19/watcher
+    ports:
+      - "8000:8000"
+    volumes:
+      - /watcher
+
+  # mongodb:
+  #   image: mongo
+  #   ports:
+  #     - "27017:27017"
+  #   # volumes:
+  #   #   - mongodb:/data/db
+  #   environment:
+  #     - MONGO_INITDB_DATABASE=ada-application-core
+
+volumes:
+  api:
+  angelica:
+  watcher:
+  cdn-server:
+  web:
+  iframe-server:

@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "description": "Accessibility improvement software",
+  "scripts": {
+    "dev": "docker-compose -f development.yml up",
+    "dev:stop": "docker-compose -f development.yml down",
+    "dev-ui": "docker-compose -f development.yml -f development-ui up"
+  }
+}
